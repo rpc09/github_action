@@ -1,6 +1,8 @@
 #!/usr/local/bin/python3
 
 import os
+import ddtrace
+
 from flask import Flask
 
 app = Flask(__name__)
