@@ -1,13 +1,8 @@
-FROM python:3.8
+FROM python:3.8.5-alpine3.12
 
-ENV VIRTUAL_ENV=/opt/venv
-RUN python -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-
-EXPOSE 8888
-
-RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
+
+EXPOSE 5000
 
 COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
