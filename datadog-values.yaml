@@ -1,0 +1,42 @@
+# Datadog Agent with Datadog Cluster Agent and
+# OrchestratorExplorer (Live Containers), Check Runners, and
+# External Metrics Server enabled
+
+targetSystem: "linux"
+datadog:
+  site: us5.datadoghq.com
+  apiKey: f007473b3e34cc378d7c3fc83bce6c65
+  appKey: c230ae82f285af1742bd1aa46a32140381180bd6
+  # If not using secrets, then use apiKey and appKey instead
+  #apiKeyExistingSecret: datadog-secret
+  #appKeyExistingSecret: datadog-secret
+  clusterName: default
+  tags: []
+  kubelet:
+    tlsVerify: "false"
+  orchestratorExplorer:
+    enabled: true
+  logs:
+    enabled: true
+    containerCollectAll: false
+    containerCollectUsingFiles: true
+  apm:
+    portEnabled: true
+    socketPath: /var/run/datadog/apm.socket
+    hostSocketPath: /var/run/datadog/
+  processAgent:
+    enabled: true
+    processCollection: false
+  systemProbe:
+    enableTCPQueueLength: false
+    enableOOMKill: false
+    collectDNSStats: false
+    #agents:
+        #  tolerations:
+    # These tolerations are needed to run the agent on master nodes
+    #- effect: NoSchedule
+    #  key: node-role.kubernetes.io/controlplane
+    #  operator: Exists
+    #- effect: NoExecute
+    #  key: node-role.kubernetes.io/etcd
+    #  operator: Exists
