@@ -18,7 +18,7 @@ datadog:
     enabled: true
   logs:
     enabled: true
-    containerCollectAll: false
+    containerCollectAll: true
     containerCollectUsingFiles: true
   apm:
     portEnabled: true
@@ -26,11 +26,11 @@ datadog:
     hostSocketPath: /var/run/datadog/
   processAgent:
     enabled: true
-    processCollection: false
+    processCollection: true
   systemProbe:
-    enableTCPQueueLength: false
+    enableTCPQueueLength: true
     enableOOMKill: false
-    collectDNSStats: false
+    collectDNSStats: true
     #agents:
         #  tolerations:
     # These tolerations are needed to run the agent on master nodes
