@@ -25,7 +25,7 @@ spec:
           name: apmsocketpath
       containers:
         - name: edu7
-          image: shclub/edu7:V10
+          image: shclub/edu7:v10
           volumeMounts:
             - name: apmsocketpath
               mountPath: /var/run/datadog
