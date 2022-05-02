@@ -30,6 +30,10 @@ spec:
             - name: apmsocketpath
               mountPath: /var/run/datadog
           env:
+            - name: DD_AGENT_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
             - name: DD_ENV
               valueFrom:
                 fieldRef:
