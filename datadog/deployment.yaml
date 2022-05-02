@@ -1,17 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: edu7
   labels:
-    tags.datadoghq.com/env: "<environment>"
-    tags.datadoghq.com/service: "<service>"
-    tags.datadoghq.com/version: "<version>"
+    tags.datadoghq.com/env: "jakelee"
+    tags.datadoghq.com/service: "edu7"
+    tags.datadoghq.com/version: "1.0"
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: edu7
   template:
     metadata:
       labels:
-        tags.datadoghq.com/env: "<environment>"
-        tags.datadoghq.com/service: "<service>"
-        tags.datadoghq.com/version: "<version>"
+        tags.datadoghq.com/env: "jakelee"
+        tags.datadoghq.com/service: "edu7"
+        tags.datadoghq.com/version: "1.0"
+        run: edu7
     spec:
       volumes:
         - hostPath:
@@ -19,7 +25,7 @@ spec:
           name: apmsocketpath
       containers:
         - name: edu7
-          image: ghcr.io/shclub/edu7/master
+          image: shclub/edu7:V10
           volumeMounts:
             - name: apmsocketpath
               mountPath: /var/run/datadog
@@ -36,7 +42,6 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.labels['tags.datadoghq.com/version']
-        
             - name: DD_PROFILING_ENABLED
               value: "true"
             - name: DD_LOGS_INJECTION
