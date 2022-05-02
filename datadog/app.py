@@ -12,15 +12,15 @@ from ddtrace import tracer
 from flask import Flask
 
 
-config.env = "edu7"      # the environment the application is in
+config.env = "jake_edu"      # the environment the application is in
 config.service = "app"  # name of your application
 config.version = "0.1"  # version of your application
 
 patch_all()
 
 FORMAT = ('%(asctime)s %(levelname)s [%(name)s] [%(filename)s:%(lineno)d] '
-          '[dd.service=%(dd.service)s dd.env=%(dd.env)s dd.version=%(dd.version)s dd.trace_id=%(dd.trace_id)s dd.span_id=%(dd.span_id)s] '
-          '- %(message)s')
+        '[dd.service=%(dd.service)s dd.env=%(dd.env)s dd.version=%(dd.version)s dd.trace_id=%(dd.trace_id)s dd.span_id=%(dd.span_id)s] '
+        '- %(message)s')
 
 logging.basicConfig(format=FORMAT)
 log = logging.getLogger(__name__)
@@ -35,6 +35,6 @@ def index():
     ret_str = " Container EDU | POD Working : " + podname + " | v=1\n"
     log.info(ret_str)
     return ret_str
-  
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port="5000")
+    app.run(host="0.0.0.0" ,port=5000)
