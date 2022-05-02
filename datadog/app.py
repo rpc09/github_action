@@ -11,7 +11,7 @@ from ddtrace import config, patch_all; patch_all(flask=True, requests=True)  # n
 from ddtrace import tracer
 from flask import Flask
 
-
+# k8s에 적용시에 주석 처리
 config.env = "jake_edu"      # the environment the application is in
 config.service = "app"  # name of your application
 config.version = "0.1"  # version of your application
@@ -30,7 +30,7 @@ app = Flask(__name__)
 podname = os.uname()[1]
 
 @app.route("/")
-@tracer.wrap()
+@tracer.wrap() # Function 앞에 추가
 def index():
     ret_str = " Container EDU | POD Working : " + podname + " | v=1\n"
     log.info(ret_str)
